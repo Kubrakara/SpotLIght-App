@@ -48,8 +48,8 @@ export const getComments = query({
         return {
           ...comment,
           user: {
-            fullname: user!.fullname,
-            image: user!.image,
+            fullname: user?.fullname,
+            image: user?.image,
           },
         };
       })
@@ -58,4 +58,3 @@ export const getComments = query({
     return commentsWithInfo;
   },
 });
-

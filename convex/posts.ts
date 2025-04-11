@@ -61,7 +61,8 @@ export const getFeedPosts = query({
           .query("bookmarks")
           .withIndex("by_user_and_post", (q) =>
             q.eq("userId", currentUser._id).eq("postId", post._id)
-          );
+          )
+          .first();
 
         return {
           ...post,

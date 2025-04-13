@@ -1,6 +1,5 @@
 import {
   FlatList,
-  ScrollView,
   Text,
   TouchableOpacity,
   View,
@@ -9,12 +8,11 @@ import { styles } from "../../styles/feed.styles";
 import { useAuth } from "@clerk/clerk-expo";
 import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "@/constants/theme";
-import { STORIES } from "@/constants/mock-data";
-import Story from "@/components/Story";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import Post from "@/components/Post";
 import { Loader } from "@/components/Loader";
+import StoriesSection from "@/components/Stories";
 
 export default function Index() {
   const { signOut } = useAuth();
@@ -50,19 +48,6 @@ export default function Index() {
     </View>
   );
 }
-const StoriesSection = () => {
-  return (
-    <ScrollView
-      horizontal
-      showsHorizontalScrollIndicator={true}
-      style={styles.storiesContainer}
-    >
-      {STORIES.map((story) => (
-        <Story key={story.id} story={story}></Story>
-      ))}
-    </ScrollView>
-  );
-};
 
 const NoPostsFound = () => (
   <View
